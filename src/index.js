@@ -24,14 +24,16 @@ function RGBFusion2(log, config) {
 }
 
 RGBFusion2.prototype.getCurrentSettings = function () {
-    fetch(this.ip + ":9009/?Get_Type=0", {methdo: "GET"}).then(response => response.text()).then(text => {
+    this.log("GET SETTINGS")
+    fetch("http://" + this.ip + ":9009/?Get_Type=0", {methdo: "GET"}).then(response => response.text()).then(text => {
 
     }).catch(err => this.log(err))
 }
 
 RGBFusion2.prototype.setSettings = function () {
-    fetch(this.ip + "/?Get_Type=0", {
-            methdo: "POST",
+    this.log("SET SETTINGS")
+    fetch("http://" + this.ip + "/?Get_Type=0", {
+            method: "POST",
             body: '<?xml version="1.0" encoding="utf-8"?>\n' +
                 '<LED_info_Easy Pattern="0"\n' +
                 '      Profile="1"\n' +
@@ -47,7 +49,6 @@ RGBFusion2.prototype.setSettings = function () {
                 '      MCU_FW="0"\n' +
                 '/>'
     }).catch(err => this.log(err))
-    this.log("STUFF")
 }
 
 RGBFusion2.prototype.getServices = function () {
