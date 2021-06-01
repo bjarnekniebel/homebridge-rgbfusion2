@@ -31,7 +31,10 @@ RGBFusion2.prototype.getCurrentSettings = function () {
 }
 
 RGBFusion2.prototype.setSettings = function () {
-    this.log("SET SETTINGS")
+    this.log("SET SETTINGS:")
+    this.log("\thue:")
+    this.log("\thue:saturation")
+    this.log("\thue:brightness")
     fetch("http://" + this.ip + ":9009/?Get_Type=0", {
             method: "POST",
             body: '<?xml version="1.0" encoding="utf-8"?>\n' +
@@ -42,7 +45,7 @@ RGBFusion2.prototype.setSettings = function () {
                 '      color="16143270"\n' +
                 '      S_Time="09:00"\n' +
                 '      E_Time="17:30"\n' +
-                '      Br="1"\n' +
+                '      Br="' + this.brightness + '"\n' +
                 '      Sp="0"\n' +
                 '      Support_Flag="191"\n' +
                 '      Password_Str="penis"\n' +
