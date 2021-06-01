@@ -47,6 +47,7 @@ RGBFusion2.prototype.setSettings = function () {
                 '      MCU_FW="0"\n' +
                 '/>'
     }).catch(err => this.log.log(err))
+    this.log.log("STUFF")
 }
 
 RGBFusion2.prototype.getServices = function () {
@@ -55,7 +56,7 @@ RGBFusion2.prototype.getServices = function () {
     informationService.setCharacteristic(Characteristic.Model, "RGBFusion2 Service");
     informationService.setCharacteristic(Characteristic.SerialNumber, "18769");
     informationService.setCharacteristic(Characteristic.FirmwareRevision, "0.0.1");
-    service = new Service.Switch(this.name);
+    service = new Service.Lightbulb(this.name);
 
     service.getCharacteristic(Characteristic.On).on("set", this.setOn.bind(this));
     service.addCharacteristic(Characteristic.Hue).on('set', this.setHue.bind(this));
