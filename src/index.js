@@ -32,7 +32,7 @@ RGBFusion2.prototype.getCurrentSettings = function () {
 
 RGBFusion2.prototype.setSettings = function () {
     this.log("SET SETTINGS")
-    fetch("http://" + this.ip + "/?Get_Type=0", {
+    fetch("http://" + this.ip + ":9009/?Get_Type=0", {
             method: "POST",
             body: '<?xml version="1.0" encoding="utf-8"?>\n' +
                 '<LED_info_Easy Pattern="0"\n' +
