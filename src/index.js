@@ -30,11 +30,44 @@ RGBFusion2.prototype.getCurrentSettings = function () {
     }).catch(err => this.log(err))
 }
 
+function componentToHex(c) {
+    var hex = c.toString(16);
+    return hex.length == 1 ? "0" + hex : hex;
+}
+
+function HSBtoHEX(h, s, v) {
+    var r, g, b;
+
+    var i = Math.floor(h * 6);
+    var f = h * 6 - i;
+    var p = v * (1 - s);
+    var q = v * (1 - f * s);
+    var t = v * (1 - (1 - f) * s);
+
+    switch (i % 6) {
+        case 0: r = v, g = t, b = p; break;
+        case 1: r = q, g = v, b = p; break;
+        case 2: r = p, g = v, b = t; break;
+        case 3: r = p, g = q, b = v; break;
+        case 4: r = t, g = p, b = v; break;
+        case 5: r = v, g = p, b = q; break;
+    }
+
+    return componentToHex(Math.round(r*255)) + componentToHex(Math.round(g*255)) + componentToHex(Math.round(b*255));
+}
+
+function HEXtoINT(hex) {
+    return parseInt(hex, 16)
+}
+
 RGBFusion2.prototype.setSettings = function () {
     this.log("SET SETTINGS:")
     this.log("\thue: " + this.hue)
     this.log("\tsaturation: " + this.saturation)
     this.log("\tbrightness: " + this.brightness)
+
+    let rgb = HEXtoINT(HSVtoHEX(this.lastHue / 360, this.lastSaturation / 100, this.lastBrightness / 100));
+    this.log("\trgb: " + rgb)
     fetch("http://" + this.ip + ":9009/?Get_Type=0", {
             method: "POST",
             body: '<?xml version="1.0" encoding="utf-8"?>\n' +
@@ -42,7 +75,7 @@ RGBFusion2.prototype.setSettings = function () {
                 '      Profile="1"\n' +
                 '      Mode="0"\n' +
                 '      Othermode="3"\n' +
-                '      color="16143270"\n' +
+                '      color="' + rgb + '"\n' +
                 '      S_Time="09:00"\n' +
                 '      E_Time="17:30"\n' +
                 '      Br="' + this.brightness + '"\n' +
