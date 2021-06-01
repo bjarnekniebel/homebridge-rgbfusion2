@@ -32,9 +32,9 @@ RGBFusion2.prototype.getCurrentSettings = function () {
 
 RGBFusion2.prototype.setSettings = function () {
     this.log("SET SETTINGS:")
-    this.log("\thue:")
-    this.log("\thue:saturation")
-    this.log("\thue:brightness")
+    this.log("\thue: " + this.hue)
+    this.log("\tsaturation: " + this.saturation)
+    this.log("\tbrightness: " + this.brightness)
     fetch("http://" + this.ip + ":9009/?Get_Type=0", {
             method: "POST",
             body: '<?xml version="1.0" encoding="utf-8"?>\n' +
