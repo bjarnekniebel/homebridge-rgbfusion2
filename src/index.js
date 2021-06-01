@@ -65,29 +65,26 @@ RGBFusion2.prototype.getServices = function () {
     return [informationService, service];
 }
 
-Serial.prototype.setOn = function(on, callback) {
-    if (on == true) {
-        this.sendSerial("on");
-    } else {
-        this.sendSerial("off");
-    }
+RGBFusion2.prototype.setOn = function(on, callback) {
+    this.on = !on;
+    this.setSettings();
     callback();
 }
 
-Serial.prototype.setHue = function(hue, callback) {
-    this.lastHue = hue;
-    this.sendSerial("hue");
+RGBFusion2.prototype.setHue = function(hue, callback) {
+    this.hue = hue;
+    this.setSettings();
     callback();
 }
 
-Serial.prototype.setSaturation = function(saturation, callback) {
-    this.lastSaturation = saturation;
-    this.sendSerial("saturation");
+RGBFusion2.prototype.setSaturation = function(saturation, callback) {
+    this.saturation = saturation;
+    this.setSettings();
     callback();
 }
 
-Serial.prototype.setBrightness = function(brightness, callback) {
-    this.lastBrightness = brightness;
-    this.sendSerial("brightness");
+RGBFusion2.prototype.setBrightness = function(brightness, callback) {
+    this.brightness = brightness;
+    this.setSettings();
     callback();
 }
