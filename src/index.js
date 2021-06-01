@@ -26,7 +26,7 @@ function RGBFusion2(log, config) {
 RGBFusion2.prototype.getCurrentSettings = function () {
     fetch(this.ip + ":9009/?Get_Type=0", {methdo: "GET"}).then(response => response.text()).then(text => {
 
-    }).catch(err => this.log.log(err))
+    }).catch(err => this.log(err))
 }
 
 RGBFusion2.prototype.setSettings = function () {
@@ -46,8 +46,8 @@ RGBFusion2.prototype.setSettings = function () {
                 '      Password_Str="penis"\n' +
                 '      MCU_FW="0"\n' +
                 '/>'
-    }).catch(err => this.log.log(err))
-    this.log.log("STUFF")
+    }).catch(err => this.log(err))
+    this.log("STUFF")
 }
 
 RGBFusion2.prototype.getServices = function () {
