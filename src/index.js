@@ -66,7 +66,7 @@ RGBFusion2.prototype.setSettings = function () {
     this.log("\tsaturation: " + this.saturation)
     this.log("\tbrightness: " + this.brightness)
 
-    let rgb = HEXtoINT(HSVtoHEX(this.hue / 360, this.saturation / 100, this.brightness / 100));
+    let rgb = HEXtoINT(HSBtoHEX(this.hue / 360, this.saturation / 100, this.brightness / 100));
     this.log("\trgb: " + rgb)
     fetch("http://" + this.ip + ":9009/?Get_Type=0", {
             method: "POST",
