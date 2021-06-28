@@ -2,11 +2,11 @@
 Example Config:
 ```
 "accessories": [
-  {
-    "accessory": "RGBFusion2",
-    "name": "PC",
-    "ip": "192.168.0.23",
-	  "password": "superSecretPassword"
-  },
+	{
+		"accessory": "RGBFusion2",
+		"name": "PC",
+		"ip": "192.168.0.23",
+		"password": "superSecretPassword"
+  	},
 }
 ```
