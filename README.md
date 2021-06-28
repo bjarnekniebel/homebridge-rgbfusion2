@@ -1,6 +1,6 @@
 # RGBFusion-2 Plugin
 
-A plugin for Home Bridge to controll RGB on Gigabyte mainboards that support RGBFusion2.
+A plugin for Home Bridge to control RGB on Gigabyte mainboards that support RGBFusion2.
 
 ![Preview](https://github.com/zode-ger/homebridge-rgbfusion2/blob/main/rgbfusion.gif)
 
