@@ -81,7 +81,7 @@ RGBFusion2.prototype.setSettings = function () {
                 '      Br="' + this.brightness + '"\n' +
                 '      Sp="0"\n' +
                 '      Support_Flag="191"\n' +
-                '      Password_Str="penis"\n' +
+                '      Password_Str="' + this.password + '"\n' +
                 '      MCU_FW="0"\n' +
                 '/>'
     }).catch(err => this.log(err))
